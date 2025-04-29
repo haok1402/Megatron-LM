@@ -352,7 +352,7 @@ class GPTDataset(MegatronDataset):
         else:
             cache_hit = False
 
-        if True:
+        if torch.distributed.get_rank() % torch.cuda.device_count() == 0:
             log_single_rank(
                 logger,
                 logging.INFO,
