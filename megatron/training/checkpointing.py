@@ -511,7 +511,7 @@ def save_checkpoint(iteration, model, optimizer, opt_param_scheduler, num_floati
 
     # And update the latest iteration
     if not torch.distributed.is_initialized() \
-            or torch.distributed.get_rank() == 0:
+            or is_last_rank():
         tracker_filename = get_checkpoint_tracker_filename(save_dir)
 
         if ckpt_type == CheckpointType.LOCAL:
